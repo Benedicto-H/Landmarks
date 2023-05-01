@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct LandmarksApp: App {
+    
+    // MARK: - StateObject-Prop
+    @StateObject private var modelData: ModelData = ModelData()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(modelData)
         }
     }
 }
