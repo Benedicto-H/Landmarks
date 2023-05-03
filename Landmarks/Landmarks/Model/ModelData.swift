@@ -13,6 +13,9 @@ final class ModelData: ObservableObject {
     
     // MARK: - Published-Prop
     @Published var landmarks: [Landmark] = load("landmarkData.json")
+    
+    // MARK: - Stored-Prop
+    var hikes: [Hike] = load("hikeData.json")
 }
 
 func load<T: Decodable>(_ filename: String) -> T {
