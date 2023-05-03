@@ -16,6 +16,19 @@ final class ModelData: ObservableObject {
     
     // MARK: - Stored-Prop
     var hikes: [Hike] = load("hikeData.json")
+    
+    // MARK: - Computed-Prop
+    var categories: [String: [Landmark]] {
+        
+        Dictionary(
+            grouping: landmarks,
+            by: { $0.category.rawValue }
+        )
+    }
+    var features: [Landmark] {
+        
+        landmarks.filter { $0.isFeatured }
+    }
 }
 
 func load<T: Decodable>(_ filename: String) -> T {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - Extension AnyTransition (-> Customization)
+// MARK: - Extension AnyTransition
 extension Animation {
     
     // MARK: - Type-Func
