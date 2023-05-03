@@ -13,8 +13,10 @@ struct Landmark: Hashable, Codable, Identifiable {
     
     // MARK: - Stored-Props
     var name: String
+    var category: Category
     var state: String
     var id: Int
+    var isFeatured: Bool
     var isFavorite: Bool
     var park: String
     var description: String
@@ -40,5 +42,13 @@ struct Landmark: Hashable, Codable, Identifiable {
         // MARK: - Stored-Props
         var latitude: Double
         var longitude: Double
+    }
+    
+    // MARK: - Enum Category
+    enum Category: String, CaseIterable, Codable {
+        
+        case lakes = "Lakes"
+        case rivers = "Rivers"
+        case mountains = "Mountains"
     }
 }
