@@ -12,6 +12,9 @@ struct CategoryHome: View {
     // MARK: - EnvironmentObject-Prop
     @EnvironmentObject var modelData: ModelData
     
+    // MARK: - State-Prop
+    @State private var showingProfile: Bool = false
+    
     var body: some View {
         NavigationStack {
             List {
@@ -28,7 +31,19 @@ struct CategoryHome: View {
                 }
                 .listRowInsets(EdgeInsets())
             }
+            .listStyle(.inset)
             .navigationTitle("Featured")
+            .toolbar {
+                Button {
+                    showingProfile.toggle()
+                } label: {
+                    Label("User Profile", systemImage: "person.crop.circle")
+                }
+            }
+            .sheet(isPresented: $showingProfile) {
+                ProfileHost()
+                    .environmentObject(modelData)
+            }
         }
     }
 }

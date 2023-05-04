@@ -13,7 +13,6 @@ extension AnyTransition {
     // MARK: - Computed-Prop
     static var moveAndFade: AnyTransition {
         
-        //  AnyTransition.move(edge: .trailing)
         .asymmetric(insertion: .move(edge: .trailing).combined(with: .opacity),
                     removal: .scale.combined(with: .opacity))
     }
@@ -21,7 +20,7 @@ extension AnyTransition {
 
 struct HikeView: View {
     var hike: Hike
-    @State private var showDetail = true
+    @State private var showDetail = false
     
     var body: some View {
         VStack {
@@ -46,10 +45,8 @@ struct HikeView: View {
                         .labelStyle(.iconOnly)
                         .imageScale(.large)
                         .rotationEffect(.degrees(showDetail ? 90 : 0))
-                    //  .animation(nil, value: showDetail)
                         .scaleEffect(showDetail ? 1.5 : 1)
                         .padding()
-                    //  .animation(.spring(), value: showDetail)
                 }
             }
             
