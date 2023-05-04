@@ -11,8 +11,9 @@ import Combine
 // MARK: - Publisher
 final class ModelData: ObservableObject {
     
-    // MARK: - Published-Prop
+    // MARK: - Published-Props
     @Published var landmarks: [Landmark] = load("landmarkData.json")
+    @Published var profile: Profile = Profile.default
     
     // MARK: - Stored-Prop
     var hikes: [Hike] = load("hikeData.json")

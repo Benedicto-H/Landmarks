@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FavoriteButton: View {
     
-    // MARK: - State-Binding
+    // MARK: - State Binding-Prop
     @Binding var isSet: Bool
     
     var body: some View {
