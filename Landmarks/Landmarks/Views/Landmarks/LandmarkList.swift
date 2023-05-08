@@ -12,21 +12,45 @@ struct LandmarkList: View {
     // MARK: - EnvironmentObject-Prop (= Subscriber)
     @EnvironmentObject var modelData: ModelData
     
-    // MARK: - State-Prop
+    // MARK: - State-Props
     @State private var showFavoritesOnly: Bool = false
+    @State private var filter: FilterCategory = FilterCategory.all
+    @State private var selectedLandmark: Landmark?
     
-    // MARK: - Computed-Prop
+    // MARK: - Computed-Props
     var filteredLandmarks: [Landmark] {
         
         modelData.landmarks.filter { landmark in
             
-            (!showFavoritesOnly || landmark.isFavorite)
+            ((!showFavoritesOnly || landmark.isFavorite) && (filter == .all || filter.rawValue == landmark.category.rawValue))
         }
+    }
+    
+    var title: String {
+        
+        let title: String = filter == .all ? "Landmarks" : filter.rawValue
+        
+        return showFavoritesOnly ? "Favorite \(title)" : title
+    }
+    
+    var index: Int? {
+        
+        modelData.landmarks.firstIndex(where: { $0.id == selectedLandmark?.id })
+    }
+    
+    // MARK: - Enum FilterCategory
+    enum FilterCategory: String, CaseIterable, Identifiable {
+        case all = "All"
+        case lakes = "Lakes"
+        case rivers = "Rivers"
+        case mountains = "Mountains"
+        
+        var id: FilterCategory { self }
     }
     
     var body: some View {
         NavigationStack {   //  NavigationView (-> iOS 13.0–16.4 Deprecated)
-            List {
+            List(selection: $selectedLandmark) {
                 Toggle(isOn: $showFavoritesOnly) {
                     Text("Favorites only")
                 }
@@ -38,10 +62,35 @@ struct LandmarkList: View {
                     } label: {
                         LandmarkRow(landmark: landmark)
                     }
+                    .tag(landmark)
                 }
             }
-            .navigationTitle("Landmarks")
+            .navigationTitle(title)
+            .frame(minWidth: 300)
+            .toolbar {
+                ToolbarItem {
+                    Menu {
+                        Picker("Category", selection: $filter) {
+                            ForEach(FilterCategory.allCases) { category in
+                                
+                                Text(category.rawValue).tag(category)
+                            }
+                        }
+                        .pickerStyle(.inline)
+                        
+                        Toggle(isOn: $showFavoritesOnly) {
+                            Label("Favorites only", systemImage: "star.fill")
+                        }
+                    } label: {
+                        Label("Filter", systemImage: "slider.horizontal.3")
+                    }
+
+                }
+            }
+            
+            Text("Select a Landmark")
         }
+        .focusedValue(\.selectedLandmark, $modelData.landmarks[index ?? 0])
     }
 }
 
