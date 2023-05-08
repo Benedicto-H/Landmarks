@@ -13,21 +13,48 @@ struct MapView: View {
     // MARK: - Stored-Prop
     var coordinate: CLLocationCoordinate2D
     
-    // MARK: - State-Prop
-    @State private var region: MKCoordinateRegion = MKCoordinateRegion()
+    // MARK: - AppStorage-Prop
+    @AppStorage("MapView.zoom") private var zoom: Zoom = .medium
     
-    var body: some View {
-        Map(coordinateRegion: $region)
-            .onAppear {
-                
-                setRegion(coordinate)
-            }
+    // MARK: - Enum Zoom
+    enum Zoom: String, CaseIterable, Identifiable {
+        case near = "Near"
+        case medium = "Medium"
+        case far = "Far"
+        
+        var id: Zoom {
+            
+            return self
+        }
     }
     
-    // MARK: - Method
-    private func setRegion(_ coordinate: CLLocationCoordinate2D) -> Void {
+    // MARK: - Computed-Props
+    var delta: CLLocationDegrees {
         
-        region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+        switch zoom {
+        case .near:
+            return 0.02
+            
+        case .medium:
+            return 0.2
+            
+        case .far:
+            return 2
+        }
+    }
+    
+    var region: MKCoordinateRegion {
+        
+        MKCoordinateRegion(
+            center: coordinate,
+            span: MKCoordinateSpan(
+                latitudeDelta: delta,
+                longitudeDelta: delta)
+        )
+    }
+    
+    var body: some View {
+        Map(coordinateRegion: .constant(region))
     }
 }
 
