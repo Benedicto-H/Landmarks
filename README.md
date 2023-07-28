@@ -9,6 +9,8 @@ It is based on sources provided by Apple for educational purposes and my code am
 
 Apple license information can be found in the LICENSE folder.
 
+<br>
+
 ## Git Commit Convention
 
 ```
@@ -26,6 +28,8 @@ Apple license information can be found in the LICENSE folder.
 - [Rename]: 파일 혹은 폴더명을 수정하거나 옮기는 작업만인 경우
 - [Remove]: 파일을 삭제하는 작업만 수행한 경우
 ```
+
+<br>
 
 ## Result
 |<img src="https://github.com/jphong1005/Landmarks/assets/52193695/cdfb7570-ff90-4ab0-aa45-1fcfc1aa01a6"></img>|<img src="https://github.com/jphong1005/Landmarks/assets/52193695/625fa9c9-20af-440b-a865-6e6ce3414d1a"></img>|<img src="https://github.com/jphong1005/Landmarks/assets/52193695/4295659a-41fc-49f4-ac93-eff2a59d6ad1"></img>|<img src="https://github.com/jphong1005/Landmarks/assets/52193695/c6703432-d20b-4bca-899c-8fe04048f86e"></img>
