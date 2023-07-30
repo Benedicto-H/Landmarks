@@ -29,7 +29,7 @@ Apple license information can be found in the LICENSE folder.
 
 <br>
 
-## Result
+## Results
 |<img src="https://github.com/jphong1005/Landmarks/assets/52193695/cdfb7570-ff90-4ab0-aa45-1fcfc1aa01a6"></img>|<img src="https://github.com/jphong1005/Landmarks/assets/52193695/625fa9c9-20af-440b-a865-6e6ce3414d1a"></img>|<img src="https://github.com/jphong1005/Landmarks/assets/52193695/4295659a-41fc-49f4-ac93-eff2a59d6ad1"></img>|<img src="https://github.com/jphong1005/Landmarks/assets/52193695/c6703432-d20b-4bca-899c-8fe04048f86e"></img>
 |:---:|:---:|:---:|:---:|
 |`CategoryHome`|`ProfileHost & ProfileEditor`|`LandmarkList & LandmarkDetail`|`Favorites only` & `Filtering Landmarks`|
