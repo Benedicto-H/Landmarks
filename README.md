@@ -1,7 +1,6 @@
 # Landmarks
 
 ## Description
-
 **SwiftUI Tutorials | Apple Developer Documentation**
 
 This project has been created based on the Apple tutorial to learn Swift UI.
@@ -12,7 +11,6 @@ Apple license information can be found in the LICENSE folder.
 <br>
 
 ## Git Commit Convention
-
 ```
 - [Feat]: 새로운 기능 추가
 - [Fix]: 버그 수정
